@@ -1,0 +1,12 @@
+Map <String, Schema.SObjectType> schemaMap = Schema.getGlobalDescribe();
+//This gives us the schema of all objects in salesforce
+System.debug('The SchemaMap is    '+schemaMap);
+Map <String, Schema.SObjectField> fieldMap = schemaMap.get('CustomCase__c').getDescribe().fields.getMap();
+//This gives us the Map of fields on an object, stored in Map.
+System.debug('The fieldMap is   '+fieldMap);
+for(Schema.SObjectField sfield : fieldMap.Values())
+{
+schema.describefieldresult dfield = sfield.getDescribe();
+
+    System.debug('The apiname of field is-->  '+dfield.getname() +'        and The field Name is-->  '+dfield.getLabel ());
+}
